@@ -1,39 +1,40 @@
 # Cartão de contato — Helena Bridi Lona
 
-Cartão digital fullscreen: tinta escura + ouro antigo, tipografia literária (Cormorant), PT/EN.
+Cartão digital fullscreen: tinta escura + vermelho `#a5121c` / `#850006`, tipografia literária (Cormorant), PT/EN.
 
-URL prevista: **https://andredev21.github.io/cartao-helena/**
+URL: **https://andredev21.github.io/cartao-helena/**
 
 ```
-index.html     o cartão
-helena.vcf     contato pra agenda
+index.html           o cartão digital
+helena.vcf           contato pra agenda
 favicon.svg
-img/avatar.jpg foto (ainda não enviada — ver img/README.md)
-DADOS.md
-.nojekyll
+img/avatar.jpg
+qr-print.png         QR preto/branco (impressão)
+qr.png               QR nas cores do cartão
+qr.svg               vetor pra gráfica
+cartao-qr.pdf        PDF no tamanho CR80 (85,5 × 54 mm) — frente e verso
+cartao-qr-a4.pdf     mesma arte em A4 com marcas de corte
+gerar-qr.py
+gerar-cartao-pdf.py
 ```
 
 ## IDV
 
 - Fundo quase preto com undertone vermelho (`#0e0708`)
-- Accent `#a5121c` e deep `#850006` — da foto (blusa / batom)
+- Accent `#a5121c` e deep `#850006`
 - Nome em serifa; chips e CTAs no mesmo vermelho
-- Monograma **HB** até entrar o avatar
 
-## Botões
+## Cartão físico / QR
 
-1. WhatsApp | LinkedIn  
-2. Adicionar contato (`.vcf`)  
-3. Lattes · Substack · E-mail  
+1. `python3 -m venv .venv && .venv/bin/pip install segno reportlab`
+2. `.venv/bin/python gerar-qr.py`
+3. `.venv/bin/python gerar-cartao-pdf.py`
+4. Imprime `cartao-qr.pdf` em tamanho real (100%) ou recorta a folha `cartao-qr-a4.pdf`.
+
+Destino do QR: `https://andredev21.github.io/cartao-helena/`
 
 ## Publicar
 
 ```bash
-git add -A && git commit -m "..." && git push -u origin main
+git push origin main && git push origin main:gh-pages
 ```
-
-Settings → Pages → branch `main` / root.
-
-## Avatar
-
-Salva a foto em `img/avatar.jpg`. Sem build.
